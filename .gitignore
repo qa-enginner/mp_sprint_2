@@ -1,2 +1,4 @@
 .DS_Store
 .idea
+**/static/admin/*
+**/__pycache__

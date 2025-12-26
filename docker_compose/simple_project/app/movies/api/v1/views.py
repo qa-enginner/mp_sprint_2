@@ -123,6 +123,5 @@ class MoviesDetailApi(MoviesApiMixin, BaseDetailView):
         Returns:
             dict: Context data for the specified movie.
         """
-        queryset = self.get_queryset()
-        context = queryset.get(id=self.kwargs['pk'])
+        context = super().get_context_data()['object']
         return context

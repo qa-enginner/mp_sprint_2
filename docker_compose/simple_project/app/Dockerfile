@@ -18,12 +18,11 @@ RUN  mkdir -p /var/www/static/ \
      && mkdir -p /opt/app/static/ \
      && mkdir -p /opt/app/media/ \
      && pip install --upgrade pip \
-     && pip install -r requirements.txt
+     && pip install -r requirements.txt \
+     && chmod +x run_uwsgi.sh
 
 COPY . .
 
-RUN python manage.py collectstatic --no-input
-
 EXPOSE 8000
 
-ENTRYPOINT ["uwsgi", "--strict", "--ini", "uwsgi.ini"]
+ENTRYPOINT ["/opt/app/run_uwsgi.sh"]
